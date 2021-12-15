@@ -5,7 +5,7 @@ from app.schemas.users import UserCreate
 from app.core.security import get_password_hash
 
 
-class CRUDUser:
+class ActionUser:
     def get_by_email(self, session: Session, email: str) -> User:
         user = session.execute(select(User.email).where(User.email == email))
         return user.fetchone()
@@ -17,4 +17,4 @@ class CRUDUser:
         return user
 
 
-user = CRUDUser()
+user = ActionUser()
