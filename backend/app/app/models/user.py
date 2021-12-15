@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, TIMESTAMP
+from sqlalchemy.sql import func
 from app.db.base_class import Base
 
 
@@ -9,3 +10,4 @@ class User(Base):
     nick = Column(String(30))
     email = Column(String(40), unique=True)
     hashed_password = Column(String(100))
+    created_at = Column(TIMESTAMP, nullable=False, server_default=func.now())

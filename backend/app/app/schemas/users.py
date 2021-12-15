@@ -9,6 +9,11 @@ class UserCreate(BaseModel):
     nick: str
 
 
+class UserInLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+
 class UserInRegister(BaseModel):
     email: EmailStr
     password: str
