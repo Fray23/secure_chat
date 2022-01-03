@@ -11,7 +11,11 @@ class ActionUser:
         return user
 
     def create(self, session: Session, obj_in: UserCreate) -> User:
-        user = User(email=obj_in.email, hashed_password=get_password_hash(obj_in.password))
+        user = User(
+            email=obj_in.email,
+            hashed_password=get_password_hash(obj_in.password),
+            nick=obj_in.nick,
+        )
         session.add(user)
         session.commit()
         return user

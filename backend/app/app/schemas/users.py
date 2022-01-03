@@ -6,7 +6,7 @@ class UserCreate(BaseModel):
     id: Optional[int] = None
     email: EmailStr
     password: str
-    nick: str
+    nick: Optional[str] = None
 
 
 class UserInLogin(BaseModel):
