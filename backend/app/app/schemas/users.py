@@ -1,27 +1,27 @@
 from typing import Optional
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 
 
 class UserCreate(BaseModel):
     id: Optional[int] = None
-    email: EmailStr
+    nickname: str
     password: str
     nick: Optional[str] = None
 
 
 class UserInLogin(BaseModel):
-    email: EmailStr
+    nickname: str
     password: str
 
 
 class UserInRegister(BaseModel):
-    email: EmailStr
+    nickname: str
     password: str
 
 
 class UserInLoginResponse(BaseModel):
     token: str
-    email: EmailStr
+    nickname: str
 
     class Config:
         orm_mode = True

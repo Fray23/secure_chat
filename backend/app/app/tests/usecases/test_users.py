@@ -4,20 +4,20 @@ from app.schemas.users import UserCreate
 
 
 def test_create_user(db_session):
-    email = 'test@test.com'
+    nickname = 'test_nickname'
     password = 'strongpassword'
-    user = usecases.user.create(db_session, UserCreate(email=email, password=password))
-    assert user.email == 'test@test.com'
+    user = usecases.user.create(db_session, UserCreate(nickname=nickname, password=password))
+    assert user.nickname == nickname
 
 
 def test_authenticate(db_session, base_user):
-    email = 'test@test.com'
+    nickname = 'test_nickname'
     password = 'password'
-    assert usecases.user.get_by_email(db_session, email=email) == \
-           usecases.user.authenticate(db_session, password=password, email=email)
+    assert usecases.user.get_by_nickname(db_session, nickname=nickname) == \
+           usecases.user.authenticate(db_session, password=password, nickname=nickname)
 
 
 def test_fail_authenticate(db_session, base_user):
-    email = 'test@test.com'
+    nickname = 'test_nickname'
     password = 'invalid_password'
-    assert usecases.user.authenticate(db_session, password=password, email=email) is None
+    assert usecases.user.authenticate(db_session, password=password, nickname=nickname) is None

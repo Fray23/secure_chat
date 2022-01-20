@@ -29,5 +29,5 @@ def db_session():
 
 @pytest.fixture
 def base_user(db_session):
-    user = usecases.user.create(db_session, UserCreate(email='test@test.com', password='password', nick='test_nick'))
+    user = usecases.user.create(db_session, UserCreate(nickname='testnickname', password='password'))
     return user
